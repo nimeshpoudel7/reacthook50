@@ -1,6 +1,7 @@
 import React from 'react'
 import ComponentC from './ComponentC'
-import {hey} from '../App'
+import {hey,colorContext} from '../App'
+
 const ComponentB = () => {
     return (
         <div>
@@ -8,7 +9,13 @@ const ComponentB = () => {
            
             <hey.Consumer>
                 {name=>{
-                    return <div>{name}</div>
+                    return( <colorContext.Consumer>
+                        {color=>(
+                             <div>
+                                name:{name} color:{color}
+                            </div>
+                        )}
+                    </colorContext.Consumer>)
                 }}
             </hey.Consumer>
             <ComponentC/>
