@@ -13,9 +13,10 @@ const reducer = (state, action) => {
             return {...state,counter:state.counter+action.payload}
             
         case 'decrement':
+            console.log("stare: "+state.counter)
             return {...state,counter:state.counter-action.payload}
         case 'reset':
-
+            console.log("stare: "+state.counter)
             return initialState
 
         default:
