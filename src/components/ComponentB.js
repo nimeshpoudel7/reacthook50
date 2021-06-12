@@ -2,9 +2,9 @@ import React,{useContext} from 'react'
 import { Button, ButtonGroup } from 'reactstrap';
 import { Badge } from 'reactstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {CounterContex} from '../App'
-import ComponentB from './ComponentB'
-const ComponentA = () => {
+import {CounterContex} from '../App';
+import ComponentC from './ComponentC'
+const ComponentB = () => {
     const counterContex = useContext(CounterContex)
     console.log(counterContex)
     const{counter,dispatch}=counterContex
@@ -24,10 +24,9 @@ const ComponentA = () => {
                  <Button color="danger" onClick={() => dispatch({type:'reset'})}>reset</Button>
             </ButtonGroup>
             <p></p>
-            <ComponentB/>
-       
+            <ComponentC/>
         </div>
     )
 }
 
-export default ComponentA
+export default ComponentB
