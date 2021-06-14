@@ -1,73 +1,37 @@
-import React,{useEffect,useReducer} from 'react';
+import React,{useState,useMemo} from 'react';
 import './App.css';
-import axios from 'axios'
+import { Button } from 'reactstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { ListGroup, ListGroupItem,Badge } from 'reactstrap';
-const initialState = {
-  loading: true,
-  error: "",
-  todos: [],
-};
-const reducer=(state,action)=>{
-  switch (action.type) {
-    case 'SET_DATA':
-      return{
-        loading:false,
-        error:"",
-        todos:action.payload
-      }
-    case 'SET_ERROR':
-      
-      return{
-        loading:false,
-        error:'some errors',
-        todos:[]
-      }
-    
-    default:
-      return state
-  }
-}
-
+import Memo from './components/Memo'
+import Memo2 from './components/Memo2'
 
 function App() {
-  const [state, dispatch] = useReducer(reducer, initialState)
-  useEffect(() => {
-    axios.get('https://jsonplaceholder.typicode.com/users/1/todos')
-    // axios.get(`https://jsonplaceholder.typicode.com/users/${id}`)
-    .then (responseJson => {
-      console.log(responseJson.data)
-      dispatch({type:'SET_DATA',payload:responseJson.data})
-      // setobjUserDetails(responseJson.data)
-      // setobjUserDetail(responseJson.data)
-    })
-    .catch(responseJson => {
-      dispatch({type:'SET_ERROR'})
-    })
-  },[])
- 
+ const [buttonCounter, SetButtonCounter] = useState(0)
+ const btnFunction=()=>{
+  SetButtonCounter(buttonCounter+1)
+ }
 
-  // let listmarkup=<div>sucess</div>
-  console.log(state.loading)
-  console.log(state.todos)
-   const CHECKDATA = (
-     <ListGroup>
-         {state.todos.map(todo => <ListGroupItem key={todo.id}>{todo.title} {todo.completed ?(<span class="badge alert-success">True</span>) : (<span class="badge alert-danger">False</span>)}</ListGroupItem>)}
+ const [buttonCounter1, SetButtonCounter1] = useState(0)
+ const btnFunction1=()=>{
+  SetButtonCounter1(buttonCounter1+1)
+ }
 
-     </ListGroup>
-   )
-  //  const listmarkup = (
-  //   <ul>
-  //     {state.todos.map(todo => <li key={todo.id}>{todo.title}</li>)}
-  //   </ul>
-  // )
-
+ const UsingMemo=useMemo(() =>{
+  return(<Memo count={buttonCounter}/>)
+ },[buttonCounter])
+ console.log(UsingMemo)
 
   return (
     
     <div className="App">
- {state.loading ? 'Loading' : (state.error ? state.error : CHECKDATA)}
+      Appjs Counter={buttonCounter}
 
+      <p></p>
+       <Button color="secondary"onClick={btnFunction}>secondary</Button>
+        {UsingMemo}
+
+        <Button color="secondary"onClick={btnFunction1}>secondary</Button>
+        <Memo2 counte={buttonCounter1}/>
     </div>
   );
 }     
