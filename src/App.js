@@ -1,6 +1,8 @@
 import React,{useEffect,useReducer} from 'react';
 import './App.css';
 import axios from 'axios'
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { ListGroup, ListGroupItem,Badge } from 'reactstrap';
 const initialState = {
   loading: true,
   error: "",
@@ -49,14 +51,10 @@ function App() {
   console.log(state.loading)
   console.log(state.todos)
    const CHECKDATA = (
-     <ul>
-       {state.todos.map((todo)=>{
-         return <li key={todo.id}>{todo.title}</li>
-       }
-       
-       )
-       }
-     </ul>
+     <ListGroup>
+         {state.todos.map(todo => <ListGroupItem key={todo.id}>{todo.title} {todo.completed ?(<span class="badge alert-success">True</span>) : (<span class="badge alert-danger">False</span>)}</ListGroupItem>)}
+
+     </ListGroup>
    )
   //  const listmarkup = (
   //   <ul>
