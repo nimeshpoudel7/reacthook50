@@ -1,38 +1,28 @@
-import React,{useState,useMemo} from 'react';
+import React,{useRef,useState} from 'react';
 import './App.css';
-import { Button } from 'reactstrap';
+import { Button  } from 'reactstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Memo from './components/Memo'
-import Memo2 from './components/Memo2'
+import UseRefSetTime from './components/UseRefSetTime';
+
 
 function App() {
- const [buttonCounter, SetButtonCounter] = useState(0)
- const btnFunction=()=>{
-  SetButtonCounter(buttonCounter+1)
- }
-
- const [buttonCounter1, SetButtonCounter1] = useState(0)
- const btnFunction1=()=>{
-  SetButtonCounter1(buttonCounter1+1)
- }
-
- const UsingMemo=useMemo(() =>{
-  return(<Memo count={buttonCounter}/>)
- },[buttonCounter])
- console.log(UsingMemo)
-
+  const [show, setShow] = useState(true)
+ const inputRef = useRef()
   return (
     
     <div className="App">
-      Appjs Counter={buttonCounter}
+    <input ref={inputRef}type="text"></input>
+    <input type="text"></input>
+    <input type="text"></input>
+    <Button onClick={()=>{
+      inputRef.current.focus()
+    }}> Use OF ref</Button>
+    <p></p>
+    <Button onClick={()=>{setShow(!show)}}>hide and show</Button>
 
-      <p></p>
-       <Button color="secondary"onClick={btnFunction}>secondary</Button>
-        {UsingMemo}
-
-        <Button color="secondary"onClick={btnFunction1}>secondary</Button>
-        <Memo2 counte={buttonCounter1}/>
+    {show && <UseRefSetTime/>}
     </div>
+    
   );
 }     
 
