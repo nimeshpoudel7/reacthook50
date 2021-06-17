@@ -1,15 +1,14 @@
 import React from 'react';
 import './App.css';
-import Customhook from './components/Customhook';
-import Customhook2 from './components/Customhook2';
+import Form from './components/Form';
+
 
 
 function App() {
   return (
     
     <div className="App">
-      <Customhook/>
-      <Customhook2/>
+     <Form/>
     </div>
     
   );
