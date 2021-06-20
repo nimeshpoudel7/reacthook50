@@ -6,8 +6,8 @@ const Home = (props) => {
     const [post, setPost] = useState([])
     useEffect(() => {  
         (async()=>{
-            const response =await axios.get(`https://jsonplaceholder.typicode.com/posts`);
-            setPost(response.data.slice(0,5))
+            const response =await axios.get(`http://dataservice.accuweather.com/locations/v1/regions?apikey=wPCBC2I8fMT7HAoPF7Hfjecw9mUmGlZY`);
+            setPost(response.data)
         })()
        
     },[])
@@ -17,9 +17,9 @@ const Home = (props) => {
                 <div className="card shadow p-3 mb-5 bg-white rounded" key={details.id}>
         <div className="card-body">
             <Link to={`/posts/${details.id}`}>
-            <h5 className="card-title">{details.title}</h5>
+            <h5 className="card-title">{details.LocalizedName}</h5>
             </Link>
-            <p className="card-text">{details.body}</p>
+            <p className="card-text">{details.EnglishName}</p>
 
         </div>
         </div>
