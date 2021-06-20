@@ -7,7 +7,7 @@ const Colorful = (WrappedComponent) => {
         "text-success",
         "text-danger",
        " text-warning",
-       " text-info",
+       " text-info"
     ]
     const color=colors[Math.floor(Math.random()*5)]
     return(props)=> {

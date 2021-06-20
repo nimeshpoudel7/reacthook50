@@ -12,6 +12,10 @@
     animation: App-logo-spin infinite 20s linear;
   }
 }
+.card{
+  width: 75%;
+  margin-left: 10%;
+}
 
 .App-header {
   background-color: #282c34;

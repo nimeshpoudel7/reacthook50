@@ -2,17 +2,17 @@ import React,{useEffect} from 'react'
 import { Link,NavLink,withRouter } from "react-router-dom";
 const Navbar = (props) => {
     console.log('nav',props)
-    const repreatalis=true;
+    
     useEffect(() => {
         setTimeout(() => {
             props.history.push('/about')
         }, 2000);
-    }, [])
+    }, [props.history])
 
     
     return (
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
-      <a className="navbar-brand" href="#">Navbar</a>
+      <a className="navbar-brand" >Navbar</a>
       <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>
       </button>
