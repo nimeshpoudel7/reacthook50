@@ -1,10 +1,10 @@
 import React from 'react'
 import faker from 'faker'
 const Contact = (props) => {
-    console.log("contact ", props)
-    setTimeout(() => {
-        props.history.push('/about')
-    }, 2000);
+    // console.log("contact ", props)
+    // setTimeout(() => {
+    //     props.history.push('/about')
+    // }, 2000);
     return (
         <div>
                 <div className="center"><h4>Contact</h4></div>

@@ -1,7 +1,8 @@
 import React,{useEffect,useState} from 'react'
 import  '../App.css'
 import axios from 'axios'
-const Home = () => {
+import {Link} from 'react-router-dom'
+const Home = (props) => {
     const [post, setPost] = useState([])
     useEffect(() => {  
         (async()=>{
@@ -10,11 +11,14 @@ const Home = () => {
         })()
        
     },[])
+    console.log('prosp',props)
     const listmarkup=post.length>0?(
     post.map(details=>(
                 <div className="card shadow p-3 mb-5 bg-white rounded" key={details.id}>
         <div className="card-body">
+            <Link to={`/posts/${details.id}`}>
             <h5 className="card-title">{details.title}</h5>
+            </Link>
             <p className="card-text">{details.body}</p>
 
         </div>
@@ -25,7 +29,7 @@ const Home = () => {
 
     return (
         <div>
-             <div classNameName="center"><h4>Home</h4></div>
+             <div className="center"><h4>Home</h4></div>
              {listmarkup}
              
         </div>
