@@ -1,11 +1,24 @@
 import React from 'react'
 import {Redirect,Route} from 'react-router-dom'
-const protectedRoute = () => {
+import auth from '../auth'
+const ProtectedRoute = ({component:Component, ...rest}) => {
+    console.log('hy',auth.isAuthenticated())
     return (
-        <div>
-            
-        </div>
+     <Route{...rest} render={
+         props=>{
+             if (auth.isAuthenticated()) {
+                 return <Component {...props}/>
+             } else {
+                 return <Redirect to ="/"/>
+             }
+         }
+     }
+     
+     
+     />
+
+     
     )
 }
 
-export default protectedRoute
+export default ProtectedRoute

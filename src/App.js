@@ -7,6 +7,7 @@ import Navbar from './components/Navbar'
 import Posts from './components/Posts';
 import pageNotFound from './components/pageNotFound'
 import { BrowserRouter as Router, Route,Switch } from "react-router-dom";
+import ProtectedRoute from './components/ProtectedRoute'
 
 function App() {
   return (
@@ -17,10 +18,11 @@ function App() {
       <Navbar/>
       <Switch>
         <Route exact path="/" component={Home} />
-        <Route path="/about" component={About} />
-        <Route path="/contact" component={Contact} />
-        <Route path="/posts/:post_id" component={Posts} />
-        <Route component={pageNotFound}/>
+
+        <ProtectedRoute path="/about" component={About} />
+        <ProtectedRoute path="/contact" component={Contact} />
+        <ProtectedRoute path="/posts/:post_id" component={Posts} />
+        <ProtectedRoute component={pageNotFound}/>
         </Switch>
 
     </div>
