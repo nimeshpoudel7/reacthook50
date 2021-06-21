@@ -5,40 +5,46 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 //import createstore
 import {createStore} from 'redux';
+import allreducer from './reducer/CombineRefucer';
+import {Provider} from 'react-redux';
 //action
-const increment =(value)=>{
-  return {type:'INCREMENT',payload:value}
-}
-const decrement =()=>{
-  return {type:'DECREMENT'}
-}
+// const increment =(value)=>{
+//   return {type:'INCREMENT',payload:value}
+// }
+// const decrement =()=>{
+//   return {type:'DECREMENT'}
+// }
 
 //redux
-const countReducer=(state=5,action)=>{
-  switch (action.type) {
-    case 'INCREMENT':
+// const countReducer=(state=5,action)=>{
+//   switch (action.type) {
+//     case 'INCREMENT':
       
-      return state+action.payload;
-      case 'DECREMENT':
+//       return state+action.payload;
+//       case 'DECREMENT':
       
-      return state-1
+//       return state-1
   
-    default:
-      return state;
-  }
-}
+//     default:
+//       return state;
+//   }
+// }
 //create store
-let store = createStore(countReducer)
-store.subscribe(()=>{
-  console.log(store.getState())
-})
-//dispatch increment action
-store.dispatch(increment(5))
+let store = createStore(allreducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
+
+// store.subscribe(()=>{
+//   console.log(store.getState())
+// })
+// //dispatch increment action
+// store.dispatch(increment(5))
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  <Provider store={store}>
+    <React.StrictMode>
+      <App />
+    </React.StrictMode>
+  </Provider>
+  ,
   document.getElementById('root')
 );
 

@@ -1,4 +1,4 @@
-import React,{useEffect} from 'react'
+import React from 'react'
 import {NavLink,withRouter,Link } from "react-router-dom";
 import auth from '../auth'
 const Navbar = (props) => {
